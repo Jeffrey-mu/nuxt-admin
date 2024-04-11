@@ -16,6 +16,9 @@ dependencies:
   ant-design-vue:
     specifier: 4.x
     version: 4.1.2(vue@3.4.20)
+  fs-extra:
+    specifier: ^11.2.0
+    version: 11.2.0
   lodash-es:
     specifier: ^4.17.21
     version: 4.17.21
@@ -42,6 +45,9 @@ devDependencies:
   '@nuxtjs/i18n':
     specifier: ^8.3.0
     version: 8.3.0(rollup@4.14.0)(vue@3.4.20)
+  '@types/fs-extra':
+    specifier: ^11.0.4
+    version: 11.0.4
   '@types/lodash-es':
     specifier: ^4.17.12
     version: 4.17.12
@@ -2429,6 +2435,13 @@ packages:
   /@types/estree@1.0.5:
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
 
+  /@types/fs-extra@11.0.4:
+    resolution: {integrity: sha512-yTbItCNreRooED33qjunPthRcSjERP1r4MqCZc7wv0u2sUkzTFp45tgUfS5+r7FrZPdmCCNflLhVSP/o+SemsQ==}
+    dependencies:
+      '@types/jsonfile': 6.1.4
+      '@types/node': 20.11.20
+    dev: true
+
   /@types/http-proxy@1.17.14:
     resolution: {integrity: sha512-SSrD0c1OQzlFX7pGu1eXxSEjemej64aaNPRhhVYUGqXh0BtldAAx37MG8btcumvpgKyZp1F5Gn3JkktdxiFv6w==}
     dependencies:
@@ -2436,6 +2449,12 @@ packages:
 
   /@types/json-schema@7.0.15:
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
+    dev: true
+
+  /@types/jsonfile@6.1.4:
+    resolution: {integrity: sha512-D5qGUYwjvnNNextdU59/+fI+spnwtTFmyQP0h+PfIOSkNfpU6AOICUOkm4i0OnSk+NyjdPJrxCDro0sJsWlRpQ==}
+    dependencies:
+      '@types/node': 20.11.20
     dev: true
 
   /@types/lodash-es@4.17.12:

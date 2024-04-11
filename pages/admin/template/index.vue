@@ -18,17 +18,17 @@ const columns = [
     key: 'action',
   },
 ]
-function handlePreview(record) {
+function handlePreview(record: any) {
   useFetch(`/api/preview?record=${JSON.stringify(record)}`).then((res) => {
     console.log(res)
-    useRouter().push({ path: '/template' })
+    useRouter().push({ path: `/template_${record.id}` })
   })
 }
 
-function handleBuild(record) {
+function handleBuild(record: any) {
   useFetch(`/api/build?record=${JSON.stringify(record)}`).then((res) => {
     console.log(res)
-    useRouter().push({ path: '/template' })
+    useRouter().push({ path: `/template_${record.id}` })
   })
 }
 const data = templateApi.data

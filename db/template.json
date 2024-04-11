@@ -2,6 +2,7 @@
   "name": "template",
   "data": [
     {
+      "id": "1",
       "name": "金融-1",
       "type": "金融",
       "header": "TemplateHeaderH1",
@@ -9,6 +10,7 @@
       "footer": "TemplateFooterF1"
     },
     {
+      "id": "2",
       "name": "健康-2",
       "type": "健康",
       "header": "TemplateHeaderH2",

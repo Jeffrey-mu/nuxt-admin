@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import Layout from './Layout.vue'
+
 definePageMeta({
   layout: 'template',
 })
 </script>
 
 <template>
-  <TemplateLayout>
+  <Layout>
     <!-- 12 -->
-  </TemplateLayout>
+  </Layout>
 </template>

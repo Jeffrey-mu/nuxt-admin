@@ -14,7 +14,7 @@ fetch('http://47.104.212.164:3000/dataList?data_type_id=&main_title=&content=&sr
 definePageMeta({
   layout: 'template',
 })
-/**/ const Body = resolveComponent('TemplateBodyB1') /**/
+/**/ const Body = resolveComponent('TemplateBodyB2') /**/
 </script>
 
 <template>

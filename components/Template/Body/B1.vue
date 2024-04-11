@@ -1,17 +1,17 @@
 <script setup lang="ts">
-
+const props = defineProps<{ data: any }>()
 </script>
 
 <template>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 m-10">
-    <div v-for="item in 10" :key="item" class="rounded overflow-hidden shadow-lg">
-      <img class="w-full" src="https://v1.tailwindcss.com/img/card-top.jpg" alt="Sunset in the mountains">
+    <div v-for="item in props.data" :key="item" class="rounded overflow-hidden shadow-lg">
+      <img class="w-full" :src="`http://47.104.212.164:3000/${item.picture}`" alt="Sunset in the mountains">
       <div class="px-6 py-4">
         <div class="font-bold text-xl mb-2">
-          The Coldest Sunset
+          {{ item.main_title }}
         </div>
         <p class="text-gray-700 text-base">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+          {{ item.description }}
         </p>
       </div>
       <div class="px-6 pt-4 pb-2">

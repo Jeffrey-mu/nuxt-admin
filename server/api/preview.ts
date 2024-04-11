@@ -1,42 +1,22 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import fse from 'fs-extra'
 import queryString from 'query-string'
 
-export const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 export default defineEventHandler((event) => {
   const query = event.req.url
   if (query) {
     const { record } = queryString.parse(query.split('?')[1])
-    const { body = '', header = '', footer = '' } = JSON.parse(record as any)
-    console.log(record, 'record')
-    fs.writeFileSync(path.join(__dirname, '../../db/preview.json'), record as string, 'utf8')
-    const indexPath = path.join(__dirname, '../../pages/template/index.vue')
-    const index = fs.readFileSync(indexPath).toString()
-    const reg = /\/\*\*\/\s*(.*?)\s*\/\*\*\//
-    const IndexCode = index.split('\n').map((item) => {
-      if (reg.test(item))
-        return `/**/ const Body = resolveComponent('${body}') /**/`
-      console.log(item)
-      return item
-    }).join('\n')
+    const { body = '', header = '', footer = '', id } = JSON.parse(record as any)
+    const templateFolderPath = path.join(__dirname, '../../pages/template/')
+    const newPath = copyTemplateFolderWithVariations(templateFolderPath, id)
 
-    fs.writeFileSync(indexPath, IndexCode)
-    const layoutPath = path.join(__dirname, '../../components/Template/Layout/index.vue')
-    const layout = fs.readFileSync(layoutPath).toString()
-    let startindex = 0
-    const layoutCode = layout.split('\n').map((item) => {
-      if (reg.test(item)) {
-        if (startindex === 0) {
-          startindex += 1
-          return `/**/ const Header = resolveComponent('${header}') /**/`
-        }
-        else { return `/**/ const Footer = resolveComponent('${footer}') /**/` }
-      }
-      return item
-    }).join('\n')
-    fs.writeFileSync(layoutPath, layoutCode)
+    updateTemplateFile(path.join(newPath, 'index.vue'), { body })
+    updateTemplateFile(path.join(newPath, 'Layout.vue'), { header, footer })
+
     return {
       code: 200,
       data: true,
@@ -47,3 +27,28 @@ export default defineEventHandler((event) => {
     data: false,
   }
 })
+
+function copyTemplateFolderWithVariations(src: string, id: string) {
+  const dest = src.replace('/template/', `/template_${id}/`)
+  fse.copySync(src, dest)
+  return dest
+}
+
+function updateTemplateFile(filePath: string, { body = '', header = '', footer = '' }) {
+  const fileContent = fs.readFileSync(filePath).toString()
+  const updatedContent = fileContent.split('\n').map((line) => {
+    const match = line.match(/\/\*\*\/\s*(.*?)\s*\/\*\*\//)
+    if (match) {
+      const componentName = match[1]
+      console.log(componentName)
+      if (componentName.includes('Body'))
+        return `/**/ const Body = resolveComponent('${body}') /**/`
+      else if (componentName.includes('Header'))
+        return `/**/ const Header = resolveComponent('${header}') /**/`
+      else if (componentName.includes('Footer'))
+        return `/**/ const Footer = resolveComponent('${footer}') /**/`
+    }
+    return line
+  }).join('\n')
+  fs.writeFileSync(filePath, updatedContent)
+}
