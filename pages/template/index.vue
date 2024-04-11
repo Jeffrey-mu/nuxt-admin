@@ -4,7 +4,7 @@ import preview from '@/db/preview.json'
 definePageMeta({
   layout: 'template',
 })
-/**/ const Body = resolveComponent('TemplateBodyB1') /**/
+/**/ const Body = resolveComponent('TemplateBodyB2') /**/
 </script>
 
 <template>

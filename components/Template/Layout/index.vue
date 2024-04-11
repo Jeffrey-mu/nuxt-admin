@@ -2,8 +2,8 @@
 definePageMeta({
   layout: 'template',
 })
-/**/ const Header = resolveComponent('TemplateHeaderH1') /**/
-/**/ const Footer = resolveComponent('TemplateFooterF1') /**/
+/**/ const Header = resolveComponent('TemplateHeaderH2') /**/
+/**/ const Footer = resolveComponent('TemplateFooterF2') /**/
 </script>
 
 <template>

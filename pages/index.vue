@@ -2,9 +2,9 @@
 defineOptions({
   name: 'HomePage',
 })
-definePageMeta({
-  layout: 'template',
-})
+// definePageMeta({
+//   layout: 'template',
+// })
 </script>
 
 <template>

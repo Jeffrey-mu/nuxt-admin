@@ -12,16 +12,13 @@
         </a>
         <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
           <li>
-            <a href="#" class="hover:underline me-4 md:me-6">About</a>
+            <a href="/template/ab-about-us" class="hover:underline me-4 md:me-6">About us</a>
           </li>
           <li>
-            <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+            <a href="/template/ab-privacy-policy" class="hover:underline me-4 md:me-6">Privacy Policy</a>
           </li>
           <li>
-            <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
-          </li>
-          <li>
-            <a href="#" class="hover:underline">Contact</a>
+            <a href="/template/ab-terms-of-use" class="hover:underline me-4 md:me-6">terms of Use</a>
           </li>
         </ul>
       </div>
